@@ -18,3 +18,20 @@ jobs:
 
     - name: Build
       run: go build -v .
+
+    - uses: engineerd/setup-kind@v0.1.0
+
+    - name: Testing
+      run: |
+        export KUBECONFIG="$(kind get kubeconfig-path)"
+        kubectl get nodes
+        echo ">>> delete KIND's default storageclass"
+        kubectl delete storageclass standard || true
+        echo ">>> deploy hostpath provisioner"
+        kubectl apply -f ${GITHUB_WORKSPACE}/hack/github/rancher-provisioner.yaml
+        echo ">>> run pod"
+        kubectl apply -f ${GITHUB_WORKSPACE}/hack/github/rancher-provisioner-pod.yaml
+        echo ">>> describe pod"
+        kubectl describe pod -n default volume-test
+        echo ">>> show pod logs"
+        kubectl logs -f -n default volume-test
