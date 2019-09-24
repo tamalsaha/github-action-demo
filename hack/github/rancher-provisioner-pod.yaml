@@ -9,7 +9,7 @@ spec:
   storageClassName: local-path
   resources:
     requests:
-      storage: 2Gi
+      storage: 50Mi
 ---
 apiVersion: v1
 kind: Pod
@@ -22,7 +22,7 @@ spec:
     command:
       - /bin/sh
       - -c
-      - "ls -l; touch /data/file.txt; cat /data/file.txt; sleep 100"
+      - "ls -l; echo testdata > /data/file.txt; cat /data/file.txt"
     imagePullPolicy: IfNotPresent
     name: busybox
     volumeMounts:

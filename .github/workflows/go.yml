@@ -33,5 +33,6 @@ jobs:
         kubectl apply -f ${GITHUB_WORKSPACE}/hack/github/rancher-provisioner-pod.yaml
         echo ">>> describe pod"
         kubectl describe pod -n default volume-test
+        sleep 10
         echo ">>> show pod logs"
-        kubectl logs -f -n default volume-test
+        kubectl logs -n default volume-test
