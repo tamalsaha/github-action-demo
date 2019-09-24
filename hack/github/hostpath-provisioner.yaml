@@ -117,4 +117,4 @@ spec:
       volumes:
         - name: pv-volume
           hostPath:
-            path: /github/home/mnt/hostpath
+            path: /github/home
