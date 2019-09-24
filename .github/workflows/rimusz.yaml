@@ -42,3 +42,4 @@ jobs:
         sleep 30
         echo ">>> describe pod"
         kubectl get pods -n default
+        kubectl describe pod -n default volume-test
