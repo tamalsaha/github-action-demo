@@ -9,3 +9,6 @@ Rancher Provisioner:
 
 Hostpath Provisioner:
 - https://github.com/rimusz/hostpath-provisioner
+
+Test Chart:
+- https://github.com/rimusz/charts/tree/master/stable/hostpath-provisioner
