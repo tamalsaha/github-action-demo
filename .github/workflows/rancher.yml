@@ -28,13 +28,14 @@ jobs:
     - name: Install local-path provisioner
       run: |
         export KUBECONFIG="$(kind get kubeconfig-path)"
-        kubectl get nodes
         kubectl wait --for=condition=Ready nodes --all --timeout=5m
+        kubectl get nodes
         kubectl delete storageclass --all
         kubectl apply -f https://github.com/rancher/local-path-provisioner/raw/master/deploy/local-path-storage.yaml
 
     - name: Test
       run: |
+        export KUBECONFIG="$(kind get kubeconfig-path)"
         echo
         echo ">>> run pod"
         kubectl apply -f ${GITHUB_WORKSPACE}/hack/github/rancher-provisioner-nonroot.yaml
