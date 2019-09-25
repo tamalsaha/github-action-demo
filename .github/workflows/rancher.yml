@@ -48,6 +48,8 @@ jobs:
         echo ">>> show pod logs"
         kubectl logs -n default volume-test
         echo
-        kubectl get pvc
+        kubectl get pvc -o yaml
         echo
-        kubectl get pv
+        kubectl get pv -o yaml
+        echo
+        kubectl get nodes
