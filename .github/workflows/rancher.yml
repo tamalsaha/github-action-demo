@@ -27,12 +27,10 @@ jobs:
       run: |
         export KUBECONFIG="$(kind get kubeconfig-path)"
         kubectl get nodes
-        echo
-        echo ">>> delete KIND's default storageclass"
-        kubectl delete storageclass standard || true
-        echo
-        echo ">>> deploy hostpath provisioner"
-        kubectl apply -f ${GITHUB_WORKSPACE}/hack/github/rancher-provisioner.yaml
+        kubectl wait --for=condition=Ready nodes --all
+        kubectl delete storageclass --all
+        kubectl apply -f https://raw.githubusercontent.com/rancher/local-path-provisioner/master/deploy/local-path-storage.yaml
+        # kubectl apply -f ${GITHUB_WORKSPACE}/hack/github/rancher-provisioner.yaml
         echo
         echo ">>> run pod"
         kubectl apply -f ${GITHUB_WORKSPACE}/hack/github/rancher-provisioner-nonroot.yaml
