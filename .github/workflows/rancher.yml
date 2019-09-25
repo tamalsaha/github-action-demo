@@ -17,7 +17,7 @@ jobs:
       uses: actions/checkout@v1
 
     - name: Build
-      run: lsblk;df;cat /proc/mounts
+      run: id;pwd;lsblk;df;cat /proc/mounts
 
     - uses: engineerd/setup-kind@v0.1.0
 
