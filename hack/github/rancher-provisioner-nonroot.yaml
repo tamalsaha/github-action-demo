@@ -27,7 +27,7 @@ spec:
     command:
       - /bin/sh
       - -c
-      - "id;ls -laR /data; echo testdata > /data/file.txt; cat /data/file.txt;ls -laR /data"
+      - "id;ls -laR /data; echo testdata > /data/file.txt; cat /data/file.txt;ls -laR /data;lsblk;df;cat /proc/mounts"
     imagePullPolicy: IfNotPresent
     name: debian
     volumeMounts:
