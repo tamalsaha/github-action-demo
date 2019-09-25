@@ -25,21 +25,50 @@ jobs:
       run: |
         export KUBECONFIG="$(kind get kubeconfig-path)"
         kubectl get nodes
+        echo
         echo ">>> delete KIND's default storageclass"
         kubectl delete storageclass standard || true
+        echo
         echo ">>> deploy hostpath provisioner"
         kubectl apply -f ${GITHUB_WORKSPACE}/hack/github/rancher-provisioner.yaml
+        echo
         echo ">>> run pod"
         kubectl apply -f ${GITHUB_WORKSPACE}/hack/github/rancher-provisioner-nonroot.yaml
         sleep 5
+        echo ">>> get pod"
+        echo
+        kubectl get pods -n default
+        sleep 5
+        echo ">>> get pod"
+        echo
+        kubectl get pods -n default
+        sleep 5
+        echo ">>> get pod"
+        echo
+        kubectl get pods -n default
+        sleep 5
+        echo ">>> get pod"
+        echo
+        kubectl get pods -n default
+        sleep 5
+        echo ">>> get pod"
+        echo
+        kubectl get pods -n default
+        sleep 5
+        echo ">>> get pod"
+        echo
+        kubectl get pods -n default
+        sleep 5
+        echo ">>> get pod"
+        echo
+        kubectl get pods -n default
+        echo
         echo ">>> describe pod"
         kubectl describe pod -n default volume-test
-        sleep 10
+        echo
         echo ">>> show pod logs"
         kubectl logs -n default volume-test
-        sleep 30
-        echo ">>> describe pod"
-        kubectl get pods -n default
-        kubectl describe pod -n default volume-test
+        echo
         kubectl get pvc
+        echo
         kubectl get pv
