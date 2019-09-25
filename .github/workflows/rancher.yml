@@ -38,7 +38,7 @@ jobs:
         for i in {1..24}; do kubectl get pod volume-test -o go-template="{{range .status.containerStatuses}}{{.lastState.terminated.message}}{{end}}";echo;sleep 5; done
         echo
         echo ">>> describe pod"
-        kubectl describe pod -n default volume-test
+        kubectl get pod -n default volume-test -o yaml
         echo
         echo ">>> show pod logs"
         kubectl logs -n default volume-test
