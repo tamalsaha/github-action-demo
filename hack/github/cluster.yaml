@@ -3,8 +3,6 @@ apiVersion: kind.sigs.k8s.io/v1alpha3
 nodes:
 # the control plane node
 - role: control-plane
-- role: worker
-- role: worker
   extraMounts:
     - containerPath: /opt/local-path-provisioner
       hostPath: /mnt
