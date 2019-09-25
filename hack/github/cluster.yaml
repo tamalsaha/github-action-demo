@@ -7,3 +7,13 @@ nodes:
     - containerPath: /opt/local-path-provisioner
       hostPath: /mnt
       readOnly: false
+- role: worker
+  extraMounts:
+    - containerPath: /opt/local-path-provisioner
+      hostPath: /mnt
+      readOnly: false
+- role: worker
+  extraMounts:
+    - containerPath: /opt/local-path-provisioner
+      hostPath: /mnt
+      readOnly: false
