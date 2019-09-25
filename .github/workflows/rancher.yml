@@ -23,7 +23,7 @@ jobs:
       with:
         config: hack/github/cluster.yaml
 
-    - name: Testing
+    - name: Install local-path provisioner
       run: |
         export KUBECONFIG="$(kind get kubeconfig-path)"
         kubectl get nodes
@@ -31,6 +31,9 @@ jobs:
         kubectl delete storageclass --all
         kubectl apply -f https://raw.githubusercontent.com/rancher/local-path-provisioner/master/deploy/local-path-storage.yaml
         # kubectl apply -f ${GITHUB_WORKSPACE}/hack/github/rancher-provisioner.yaml
+
+    - name: Test
+      run: |
         echo
         echo ">>> run pod"
         kubectl apply -f ${GITHUB_WORKSPACE}/hack/github/rancher-provisioner-nonroot.yaml
