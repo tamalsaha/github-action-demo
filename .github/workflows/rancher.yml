@@ -17,12 +17,13 @@ jobs:
       uses: actions/checkout@v1
 
     - name: Create Kubernetes Cluster
-      id: buildx
+      id: kind
       uses: engineerd/setup-kind@v0.1.0
       with:
         config: hack/github/cluster.yaml
 
     - name: Install local-path provisioner
+      id: local-path
       run: |
         export KUBECONFIG="$(kind get kubeconfig-path)"
         kubectl wait --for=condition=Ready nodes --all --timeout=5m
