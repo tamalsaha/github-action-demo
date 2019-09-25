@@ -17,6 +17,7 @@ metadata:
   name: volume-test
   namespace: default
 spec:
+  restartPolicy: Never
   containers:
   - image: tigerworks/debian:nonroot
     command:

@@ -35,7 +35,7 @@ jobs:
         echo ">>> run pod"
         kubectl apply -f ${GITHUB_WORKSPACE}/hack/github/rancher-provisioner-nonroot.yaml
         echo ">>> get pod"
-        for i in {1..24}; do kubectl get pods -n default;echo;sleep 5; done
+        for i in {1..24}; do kubectl get pod volume-test -o go-template="{{range .status.containerStatuses}}{{.lastState.terminated.message}}{{end}}";echo;sleep 5; done
         echo
         echo ">>> describe pod"
         kubectl describe pod -n default volume-test
