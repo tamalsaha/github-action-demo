@@ -20,6 +20,8 @@ jobs:
       run: id;pwd;lsblk;df;cat /proc/mounts
 
     - uses: engineerd/setup-kind@v0.1.0
+        with:
+            config: hack/github/cluster.yaml
 
     - name: Testing
       run: |
