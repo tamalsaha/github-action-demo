@@ -22,7 +22,7 @@ spec:
     command:
       - /bin/sh
       - -c
-      - "ls -l /data; echo testdata > /data/file.txt; cat /data/file.txt"
+      - "ls -l /data; echo testdata > /data/file.txt; cat /data/file.txt;sleep300"
     imagePullPolicy: IfNotPresent
     name: busybox
     volumeMounts:
