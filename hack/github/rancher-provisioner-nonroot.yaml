@@ -18,6 +18,10 @@ metadata:
   namespace: default
 spec:
   restartPolicy: Never
+  securityContext:
+    runAsUser: 999
+    runAsGroup: 999
+    fsGroup: 999
   containers:
   - image: tigerworks/debian:nonroot
     command:
